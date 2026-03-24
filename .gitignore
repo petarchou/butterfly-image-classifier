@@ -19,7 +19,7 @@ env/
 *.ipynb
 
 # Model artifacts (large binary files)
-artifacts/*.keras
+# artifacts/*.keras
 artifacts/*.h5
 artifacts/*.pb
 artifacts/*.tflite

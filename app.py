@@ -1,5 +1,7 @@
 import json
 import os
+import subprocess
+import sys
 
 import streamlit as st
 import tensorflow as tf
@@ -15,6 +17,16 @@ TRAIN_CONFIG_PATH = os.path.join(ARTIFACTS_DIR, "train_config.json")
 
 @st.cache_resource
 def load_resources():
+    if not os.path.exists(MODEL_PATH) or not os.path.exists(CLASS_NAMES_PATH):
+        with st.spinner("Model not found — training now (this may take several minutes)..."):
+            result = subprocess.run(
+                [sys.executable, "train.py"],
+                capture_output=True,
+                text=True,
+            )
+        if result.returncode != 0:
+            raise RuntimeError(f"Training failed:\n{result.stderr}")
+
     model = tf.keras.models.load_model(
         MODEL_PATH,
         custom_objects={"preprocess_input": tf.keras.applications.mobilenet_v3.preprocess_input},
@@ -35,10 +47,6 @@ def main():
     st.set_page_config(page_title="Butterfly Classifier", page_icon=":butterfly:")
     st.title("Butterfly Image Classifier")
     st.caption("Upload an image and get a species prediction from the trained model.")
-
-    if not os.path.exists(MODEL_PATH) or not os.path.exists(CLASS_NAMES_PATH):
-        st.error("Missing model artifacts. Run `python train.py` first.")
-        st.stop()
 
     try:
         model, class_names, img_size = load_resources()
