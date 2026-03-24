@@ -1,6 +1,6 @@
 # Use the Apple-optimized base
 tensorflow==2.16.2
-tf-keras~=2.16.0
+keras=3.10.0
 
 # Standard data science stack (native arm64 versions)
 streamlit
