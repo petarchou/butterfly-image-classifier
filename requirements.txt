@@ -1,0 +1,13 @@
+# Use the Apple-optimized base
+tensorflow-macos
+# Add GPU acceleration support
+tensorflow-metal
+
+# Standard data science stack (native arm64 versions)
+streamlit
+pillow
+numpy
+pandas
+scikit-learn
+kagglehub
+matplotlib

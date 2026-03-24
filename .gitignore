@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Model artifacts (large binary files)
+artifacts/*.keras
+artifacts/*.h5
+artifacts/*.pb
+artifacts/*.tflite
+artifacts/*.onnx
+
+# Keep metadata artifacts
+!artifacts/class_names.json
+!artifacts/train_config.json
+!artifacts/training_accuracy.png
+
+# Dataset images
+train/
+test/
+*.csv
+
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+
+# TensorFlow / Keras logs
+logs/
+*.tfevents.*
