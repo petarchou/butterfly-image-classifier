@@ -1,7 +1,7 @@
 # Use the Apple-optimized base
-tensorflow-macos
+tensorflow
 # Add GPU acceleration support
-tensorflow-metal
+tensorflow
 
 # Standard data science stack (native arm64 versions)
 streamlit
